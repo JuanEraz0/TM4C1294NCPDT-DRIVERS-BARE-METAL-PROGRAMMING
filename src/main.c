@@ -13,7 +13,23 @@
 
 
 
+void drivers_setup(void);
+
+
+
 int main(void)
 {
+
+
 	return 0;
+}
+
+
+void drivers_setup(void){
+    adc_init();
+    timer_init();
+    gpio_init_portA();
+    gpio_init_portB();
+    gpio_init_portC();
+
 }

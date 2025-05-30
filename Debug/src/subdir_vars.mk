@@ -3,25 +3,22 @@
 ################################################################################
 
 # Add inputs and outputs from these tool invocations to the build variables 
-CMD_SRCS += \
-../tm4c1294ncpdt.cmd 
-
 C_SRCS += \
-../tm4c1294ncpdt_startup_ccs.c 
+../src/main.c 
 
 C_DEPS += \
-./tm4c1294ncpdt_startup_ccs.d 
+./src/main.d 
 
 OBJS += \
-./tm4c1294ncpdt_startup_ccs.obj 
+./src/main.obj 
 
 OBJS__QUOTED += \
-"tm4c1294ncpdt_startup_ccs.obj" 
+"src/main.obj" 
 
 C_DEPS__QUOTED += \
-"tm4c1294ncpdt_startup_ccs.d" 
+"src/main.d" 
 
 C_SRCS__QUOTED += \
-"../tm4c1294ncpdt_startup_ccs.c" 
+"../src/main.c" 
 
 

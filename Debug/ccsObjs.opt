@@ -1,5 +1,7 @@
-"./main.obj"
 "./tm4c1294ncpdt_startup_ccs.obj"
+"./lib/adc/adc.obj"
 "./lib/gpio/gpio.obj"
+"./lib/timer/timer.obj"
+"./src/main.obj"
 "../tm4c1294ncpdt.cmd"
 -llibc.a

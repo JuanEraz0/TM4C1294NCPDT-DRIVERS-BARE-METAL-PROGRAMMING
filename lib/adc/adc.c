@@ -1,22 +1,20 @@
 /*
- * gpio.c
+ * adc.c
  *
  *  Created on: May 30, 2025
  *      Author: juanjoseerazopacheco
  */
 
-#include "gpio.h"
+#include "adc.h"
 #include "inc/tm4c1294ncpdt.h"
 
 
-void gpio_init_portA(void){
+void adc_init(void){
+
+
 
 }
-void gpio_init_portB(void){
 
-}
-void gpio_init_portC(void){
 
-}
 
 
