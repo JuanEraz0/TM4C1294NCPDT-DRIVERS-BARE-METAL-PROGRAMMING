@@ -22,7 +22,6 @@ int main(void)
     drivers_setup();
 
 
-
 	return 0;
 }
 
