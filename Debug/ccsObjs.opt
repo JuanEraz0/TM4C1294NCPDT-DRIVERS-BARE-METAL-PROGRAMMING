@@ -1,0 +1,5 @@
+"./main.obj"
+"./tm4c1294ncpdt_startup_ccs.obj"
+"./lib/gpio/gpio.obj"
+"../tm4c1294ncpdt.cmd"
+-llibc.a
