@@ -56,6 +56,10 @@ extern uint32_t __STACK_TOP;
 //*****************************************************************************
 // To be added by user
 
+extern void Timer03AIntHandler(void);
+extern void ISR_handler(void);
+
+
 //*****************************************************************************
 //
 // The vector table.  Note that the proper constructs must be placed on this to
