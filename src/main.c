@@ -19,6 +19,8 @@ void drivers_setup(void);
 
 int main(void)
 {
+    drivers_setup();
+
 
 
 	return 0;
