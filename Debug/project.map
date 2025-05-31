@@ -1,7 +1,7 @@
 ******************************************************************************
-                  TI ARM Linker Unix v20.2.7                   
+                  TI ARM Linker PC v20.2.7                     
 ******************************************************************************
->> Linked Fri May 30 19:19:22 2025
+>> Linked Sat May 31 00:30:25 2025
 
 OUTPUT FILE NAME:   <project.out>
 ENTRY POINT SYMBOL: "_c_int00_noargs"  address: 0000097d
@@ -84,32 +84,32 @@ MODULE SUMMARY
 
        Module                          code   ro data   rw data
        ------                          ----   -------   -------
-    ./
+    .\
        tm4c1294ncpdt_startup_ccs.obj   12     520       0      
     +--+-------------------------------+------+---------+---------+
        Total:                          12     520       0      
                                                                
-    ./lib/adc/
+    .\lib\adc\
        adc.obj                         552    0         24     
     +--+-------------------------------+------+---------+---------+
        Total:                          552    0         24     
                                                                
-    ./lib/gpio/
+    .\lib\gpio\
        gpio.obj                        52     0         0      
     +--+-------------------------------+------+---------+---------+
        Total:                          52     0         0      
                                                                
-    ./lib/timer/
+    .\lib\timer\
        timer.obj                       2      0         0      
     +--+-------------------------------+------+---------+---------+
        Total:                          2      0         0      
                                                                
-    ./src/
+    .\src\
        main.obj                        120    0         16     
     +--+-------------------------------+------+---------+---------+
        Total:                          120    0         16     
                                                                
-    /Applications/ti/ccs1281/ccs/tools/compiler/ti-cgt-arm_20.2.7.LTS/lib/rtsv7M4_T_le_v4SPD16_eabi.lib
+    C:\ti\ccs1281\ccs\tools\compiler\ti-cgt-arm_20.2.7.LTS\lib\rtsv7M4_T_le_v4SPD16_eabi.lib
        fd_add_t2.asm.obj               438    0         0      
        fd_div_t2.asm.obj               310    0         0      
        fd_mul_t2.asm.obj               252    0         0      

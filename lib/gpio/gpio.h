@@ -5,8 +5,8 @@
  *      Author: juanjoseerazopacheco
  */
 
-#ifndef LIB_GPIO_GPIO_H_
-#define LIB_GPIO_GPIO_H_
+#ifndef GPIO_H_
+#define GPIO_H_
 
 void gpio_init_portJ(void);
 void gpio_init_portB(void);
@@ -17,4 +17,4 @@ void gpio_init_portC(void);
 
 
 
-#endif /* LIB_GPIO_GPIO_H_ */
+#endif /* GPIO_H_ */

@@ -114,6 +114,7 @@ SUBDIRS := \
 . \
 lib/adc \
 lib/gpio \
+lib/stepper_motor \
 lib/timer \
 src \
 

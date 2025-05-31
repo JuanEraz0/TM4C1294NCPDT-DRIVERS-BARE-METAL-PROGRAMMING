@@ -2,7 +2,9 @@
 # Automatically-generated file. Do not edit!
 ################################################################################
 
-CG_TOOL_ROOT := /Applications/ti/ccs1281/ccs/tools/compiler/ti-cgt-arm_20.2.7.LTS
+SHELL = cmd.exe
+
+CG_TOOL_ROOT := C:/ti/ccs1281/ccs/tools/compiler/ti-cgt-arm_20.2.7.LTS
 
 GEN_OPTS__FLAG := 
 GEN_CMDS__FLAG := 
@@ -11,6 +13,7 @@ ORDERED_OBJS += \
 "./tm4c1294ncpdt_startup_ccs.obj" \
 "./lib/adc/adc.obj" \
 "./lib/gpio/gpio.obj" \
+"./lib/stepper_motor/stepper_motor.obj" \
 "./lib/timer/timer.obj" \
 "./src/main.obj" \
 "../tm4c1294ncpdt.cmd" \
@@ -19,19 +22,21 @@ $(GEN_CMDS__FLAG) \
 
 -include ../makefile.init
 
-RM := rm -rf
-RMDIR := rm -rf
+RM := DEL /F
+RMDIR := RMDIR /S/Q
 
 # All of the sources participating in the build are defined here
 -include sources.mk
 -include subdir_vars.mk
 -include lib/adc/subdir_vars.mk
 -include lib/gpio/subdir_vars.mk
+-include lib/stepper_motor/subdir_vars.mk
 -include lib/timer/subdir_vars.mk
 -include src/subdir_vars.mk
 -include subdir_rules.mk
 -include lib/adc/subdir_rules.mk
 -include lib/gpio/subdir_rules.mk
+-include lib/stepper_motor/subdir_rules.mk
 -include lib/timer/subdir_rules.mk
 -include src/subdir_rules.mk
 -include objects.mk
@@ -144,15 +149,15 @@ all: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
 project.out: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
 	@echo 'Building target: "$@"'
 	@echo 'Invoking: Arm Linker'
-	"/Applications/ti/ccs1281/ccs/tools/compiler/ti-cgt-arm_20.2.7.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --define=ccs="ccs" --define=PART_TM4C1294NCPDT -g --gcc --diag_warning=225 --diag_wrap=off --display_error_number --abi=eabi -z -m"project.map" --heap_size=0 --stack_size=512 -i"/Applications/ti/ccs1281/ccs/tools/compiler/ti-cgt-arm_20.2.7.LTS/lib" -i"/Applications/ti/ccs1281/ccs/tools/compiler/ti-cgt-arm_20.2.7.LTS/include" --reread_libs --diag_wrap=off --display_error_number --warn_sections --xml_link_info="project_linkInfo.xml" --rom_model -o "project.out" $(ORDERED_OBJS)
+	"C:/ti/ccs1281/ccs/tools/compiler/ti-cgt-arm_20.2.7.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --define=ccs="ccs" --define=PART_TM4C1294NCPDT -g --gcc --diag_warning=225 --diag_wrap=off --display_error_number --abi=eabi -z -m"project.map" --heap_size=0 --stack_size=512 -i"C:/ti/ccs1281/ccs/tools/compiler/ti-cgt-arm_20.2.7.LTS/lib" -i"C:/ti/ccs1281/ccs/tools/compiler/ti-cgt-arm_20.2.7.LTS/include" --reread_libs --diag_wrap=off --display_error_number --warn_sections --xml_link_info="project_linkInfo.xml" --rom_model -o "project.out" $(ORDERED_OBJS)
 	@echo 'Finished building target: "$@"'
 	@echo ' '
 
 # Other Targets
 clean:
 	-$(RM) $(EXE_OUTPUTS__QUOTED)
-	-$(RM) "tm4c1294ncpdt_startup_ccs.obj" "lib/adc/adc.obj" "lib/gpio/gpio.obj" "lib/timer/timer.obj" "src/main.obj" 
-	-$(RM) "tm4c1294ncpdt_startup_ccs.d" "lib/adc/adc.d" "lib/gpio/gpio.d" "lib/timer/timer.d" "src/main.d" 
+	-$(RM) "tm4c1294ncpdt_startup_ccs.obj" "lib\adc\adc.obj" "lib\gpio\gpio.obj" "lib\stepper_motor\stepper_motor.obj" "lib\timer\timer.obj" "src\main.obj" 
+	-$(RM) "tm4c1294ncpdt_startup_ccs.d" "lib\adc\adc.d" "lib\gpio\gpio.d" "lib\stepper_motor\stepper_motor.d" "lib\timer\timer.d" "src\main.d" 
 	-@echo 'Finished clean'
 	-@echo ' '
 

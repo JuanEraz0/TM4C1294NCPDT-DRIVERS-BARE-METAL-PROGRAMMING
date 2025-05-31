@@ -5,8 +5,8 @@
  *      Author: juanjoseerazopacheco
  */
 
-#ifndef LIB_TIMER_TIMER_H_
-#define LIB_TIMER_TIMER_H_
+#ifndef TIMER_H_
+#define TIMER_H_
 
 
 void timer_init(void);
@@ -16,4 +16,4 @@ void timer_init(void);
 
 
 
-#endif /* LIB_TIMER_TIMER_H_ */
+#endif /* TIMER_H_ */

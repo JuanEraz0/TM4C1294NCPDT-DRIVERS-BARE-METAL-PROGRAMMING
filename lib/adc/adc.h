@@ -5,8 +5,8 @@
  *      Author: juanjoseerazopacheco
  */
 
-#ifndef LIB_ADC_ADC_H_
-#define LIB_ADC_ADC_H_
+#ifndef ADC_H_
+#define ADC_H_
 
 #include <stdint.h>
 #include <stdio.h>
@@ -32,4 +32,4 @@ float adc_get_current_value();
 
 
 
-#endif /* LIB_ADC_ADC_H_ */
+#endif /* ADC_H_ */
