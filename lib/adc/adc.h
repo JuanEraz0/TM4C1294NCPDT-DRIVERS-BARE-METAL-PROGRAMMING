@@ -24,7 +24,9 @@ float rounded;
 
 
 void adc_init(void);
-uint16_t adc_get_value();
+uint16_t adc_get_temperature_value();
+float adc_get_current_value();
+
 
 
 

@@ -8,7 +8,7 @@
 #ifndef LIB_GPIO_GPIO_H_
 #define LIB_GPIO_GPIO_H_
 
-void gpio_init_portA(void);
+void gpio_init_portJ(void);
 void gpio_init_portB(void);
 void gpio_init_portC(void);
 

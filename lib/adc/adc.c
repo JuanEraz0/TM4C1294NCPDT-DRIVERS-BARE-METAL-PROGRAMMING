@@ -58,24 +58,32 @@ void adc_init(void){
 
 }
 
-uint16_t adc_get_value(){
+uint16_t adc_get_temperature_value(){
 
-
+    // API to get temperature adc lecture
     ADC0_PSSI_R = 0x0008; // starts conversion
     while ((ADC0_RIS_R & 0x08) == 0) {} // wait conversion finished up
     result_temperature = (ADC0_SSFIFO3_R & 0xFFF); // result_temperatura -> FIFO3
     ADC0_ISC_R = 0x0008;
 
-    // Lectura y cálculo de corriente
-    ADC0_PSSI_R = 0x0001; // Arranca la conversión
-    while ((ADC0_RIS_R & 0x01) == 0) {} // Espera a que termine la conversión
-    result_current = (ADC0_SSFIFO0_R & 0xFFF);
-    ADC0_ISC_R = 0x0001;
-    result_current_f = (float)result_current;
-    voltage_current = (result_current_f*5.5)/4095; // Resolución
-    current = (voltage_current - 2.55) * 45.4545;
     return result_temperature;
 
+
+}
+
+float adc_get_current_value(){
+
+    // API to get current adc lecture
+
+    ADC0_PSSI_R = 0x0001; // starts conversion
+    while ((ADC0_RIS_R & 0x01) == 0) {} // wait conversion finished up
+    result_current = (ADC0_SSFIFO0_R & 0xFFF); //result_current -> FIFO0
+    ADC0_ISC_R = 0x0001;
+    result_current_f = (float)result_current; // casting hex to float
+    voltage_current = (result_current_f*5.5)/4095; // adjust the resolution of the sensor
+    current = (voltage_current - 2.55) * 45.4545;
+
+    return current;
 }
 
 

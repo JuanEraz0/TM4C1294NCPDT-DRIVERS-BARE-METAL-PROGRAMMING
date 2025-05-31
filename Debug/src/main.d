@@ -18,6 +18,8 @@ src/main.obj: /Applications/ti/ccs1281/SW-TM4C/TivaWare_C_Series-2.1.4.178/inc/t
 src/main.obj: /Users/juanjoseerazopacheco/Documents/TM4C1294NCPDT-DRIVERS-BARE-METAL-PROGRAMMING/lib/gpio/gpio.h
 src/main.obj: /Users/juanjoseerazopacheco/Documents/TM4C1294NCPDT-DRIVERS-BARE-METAL-PROGRAMMING/lib/adc/adc.h
 src/main.obj: /Users/juanjoseerazopacheco/Documents/TM4C1294NCPDT-DRIVERS-BARE-METAL-PROGRAMMING/lib/timer/timer.h
+src/main.obj: /Applications/ti/ccs1281/SW-TM4C/TivaWare_C_Series-2.1.4.178/driverlib/sysctl.h
+src/main.obj: /Applications/ti/ccs1281/ccs/tools/compiler/ti-cgt-arm_20.2.7.LTS/include/stdbool.h
 
 ../src/main.c:
 
@@ -54,4 +56,8 @@ src/main.obj: /Users/juanjoseerazopacheco/Documents/TM4C1294NCPDT-DRIVERS-BARE-M
 /Users/juanjoseerazopacheco/Documents/TM4C1294NCPDT-DRIVERS-BARE-METAL-PROGRAMMING/lib/adc/adc.h:
 
 /Users/juanjoseerazopacheco/Documents/TM4C1294NCPDT-DRIVERS-BARE-METAL-PROGRAMMING/lib/timer/timer.h:
+
+/Applications/ti/ccs1281/SW-TM4C/TivaWare_C_Series-2.1.4.178/driverlib/sysctl.h:
+
+/Applications/ti/ccs1281/ccs/tools/compiler/ti-cgt-arm_20.2.7.LTS/include/stdbool.h:
 
