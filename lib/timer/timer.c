@@ -30,4 +30,22 @@ void timer3_init(void){
 
 }
 
+void timer5_init(void){
+    SYSCTL_RCGCTIMER_R |= 0x20; //Enables TIMER5 clk
+    while((SYSCTL_PRGPIO_R & 0x800)==0){}
+    TIMER5_CTL_R &= ~0x100; //Disables TIMER5
+    TIMER5_CFG_R = 0x4; //Set up for 16 Bits
+    TIMER5_TBMR_R |= 0x40A; //Set up as PWM Mode, step down count, periodic MODE
+
+    TIMER5_TBILR_R = 0xFFF;
+    TIMER5_TBMATCHR_R = 0;
+
+    //Valor de recarga ( p. 1004)
+
+    //TIMER5_TBPR_R = 0xFF; //preescaler TIMER B 256
+
+    TIMER5_CTL_R |= 0x4100; //Enables TIMER3 in configuration
+
+}
+
 

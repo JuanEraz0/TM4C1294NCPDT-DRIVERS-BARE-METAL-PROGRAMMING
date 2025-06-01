@@ -19,13 +19,13 @@
 // Global variables to store sensor and button input data
 
 
-//Digital inputs
+//Digital inputs vars
 
 int pj0_status, pj1_status, pd0_status;
 
-//ADC inputs
-uint32_t temperature;
-uint16_t current;
+//ADC vars
+uint32_t potentiometer;
+uint16_t potentiometerVoltage;
 
 //TIMER3 Vars
 
@@ -35,7 +35,11 @@ float clk = 16e6; //Freq of mcu
 float period;
 float rpm = 0;
 
+//TIMER5 Vars
+int dutyCycle = 0x7FF;
 
+//ISR control vars
+volatile uint8_t hall_triggered = 0;
 
 // Function prototypes
 
@@ -65,12 +69,17 @@ int main(void)
     // Infinite loop: polling obtained data
 
     while(1){
-        stepper_motor_rotates_right();
-        temperature = adc_get_temperature_value();
-        current = adc_get_current_value();
+
+        potentiometerVoltage = ((adc0_get_value()*330)/4095)/100;
+        dutyCycle = adc0_get_value();
+        TIMER5_TBMATCHR_R = dutyCycle;
 
         read_gpio_inputs();
-        //SysCtlDelay(1600000); // ~100ms if clock is 16 MHz
+
+        if (hall_triggered) {
+            stepper_motor_rotates_right(); // ejecuta solo si fue activado
+        }
+
 
     }
 
@@ -83,9 +92,14 @@ void drivers_setup(void){
     gpio_init_portJ();
     gpio_init_portD();
     gpio_init_portL();
-
+    gpio_init_portN();
+    gpio_init_portM();
+    ISR_switch_init();
+    ISR_hall_init();
+    adc0_init();
     timer3_init();
-    adc_init();
+    timer5_init();
+
 
 }
 
@@ -93,29 +107,54 @@ void read_gpio_inputs(){
 
     pj0_status = (GPIO_PORTJ_AHB_DATA_R & 0x01);
     pj1_status = (GPIO_PORTJ_AHB_DATA_R & 0x02);
-    pd0_status = (GPIO_PORTD_AHB_DATA_R & 0x01);
-
+    //pd0_status = (GPIO_PORTD_AHB_DATA_R & 0x01);
+    pd0_status = GPIO_PORTD_AHB_MIS_R;
 }
 
 void ISR_hall_init(void){
 
+    GPIO_PORTD_AHB_IM_R = 0x00; //Disables uDMA detect Port Interrupts
+    GPIO_PORTD_AHB_IS_R = 0x00; //detects edge falling LOW -> HIGH (Pull Up resistance)
+    GPIO_PORTD_AHB_IBE_R = 0x00;
+    GPIO_PORTD_AHB_IEV_R = 0x01; //interrupt event as falling edge
+    GPIO_PORTD_AHB_ICR_R=0x01; //Clean interrupt flag
+    GPIO_PORTD_AHB_IM_R = 0x01; //Enables uDMA detect Port Interrupts
+
+    NVIC_EN0_R |= 0x00000008;
 
 }
 
 
 void ISR_hall_handler(void){
 
+    if (GPIO_PORTD_AHB_MIS_R & 0x01) { // verifica si fue PD0
+        GPIO_PORTD_AHB_ICR_R = 0x01;   // limpia la interrupción
+        hall_triggered = 0;  // Señal para main()
 
+    }
 
 }
 void ISR_switch_init(void){
 
+    GPIO_PORTN_IM_R = 0x00; //Disables uDMA detect Port Interrupts
+    GPIO_PORTN_IS_R = 0x00; //detects edge falling HIGH->LOW (Pull Up resistance)
+    GPIO_PORTN_IBE_R = 0x00;
+    GPIO_PORTN_IEV_R = 0x00; //interrupt event as falling edge
+    GPIO_PORTN_ICR_R=0x04; //Clean interrupt flag
+    GPIO_PORTN_IM_R = 0x04; //Enables uDMA detect Port Interrupts
+
+    NVIC_EN2_R |= 0x00000200;
 
 }
 
 
 void ISR_switch_handler(void){
 
+    if (GPIO_PORTN_MIS_R & 0x04) {
+        GPIO_PORTN_ICR_R = 0x04;   // limpia la interrupción
+        hall_triggered = 1;  // Señal para main()
+
+    }
 
 
 }
@@ -131,7 +170,7 @@ void Timer03AIntHandler(void){
 
     period = period * 1/clk;
     frequency = (uint8_t)1/period;
-
-    rpm = (float)frequency*60;
     First = TIMER3_TAR_R; //charges to compare with the next
+    rpm = (float)frequency*60;
+
 }

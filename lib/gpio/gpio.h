@@ -11,6 +11,9 @@
 void gpio_init_portJ(void);
 void gpio_init_portL(void);
 void gpio_init_portD(void);
+void gpio_init_portN(void);
+void gpio_init_portE(void);
+void gpio_init_portM(void);
 
 
 

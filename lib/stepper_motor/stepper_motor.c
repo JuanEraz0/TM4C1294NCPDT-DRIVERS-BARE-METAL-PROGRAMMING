@@ -10,6 +10,7 @@
 #include <stdint.h>
 #include <stdio.h>
 
+
 int right_sequence [4]= {0x9, 0xc, 0x6, 0x3}; // Stepper motor pulses sends to each coil in order to get a right edge movement
 int left_sequence [4] = {0x3, 0x6, 0xc, 0x9}; // Stepper motor pulses sends to each coil in order to get a left edge movement
 int i, j;

@@ -19,6 +19,7 @@ ORDERED_OBJS += \
 "../tm4c1294ncpdt.cmd" \
 $(GEN_CMDS__FLAG) \
 -llibc.a \
+-l"C:/ti/ccs1281/SW-TM4C/driverlib.lib" \
 
 -include ../makefile.init
 

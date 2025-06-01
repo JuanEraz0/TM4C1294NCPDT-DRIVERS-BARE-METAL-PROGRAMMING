@@ -6,3 +6,4 @@
 "./src/main.obj"
 "../tm4c1294ncpdt.cmd"
 -llibc.a
+-l"C:/ti/ccs1281/SW-TM4C/driverlib.lib"

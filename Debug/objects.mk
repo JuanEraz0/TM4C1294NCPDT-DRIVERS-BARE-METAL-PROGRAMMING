@@ -4,5 +4,5 @@
 
 USER_OBJS :=
 
-LIBS := -llibc.a
+LIBS := -llibc.a -l"C:/ti/ccs1281/SW-TM4C/driverlib.lib"
 

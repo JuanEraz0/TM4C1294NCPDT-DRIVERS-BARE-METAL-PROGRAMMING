@@ -10,24 +10,18 @@
 #include <math.h>
 
 
+uint16_t adc0RawValue;
+uint16_t adc0VoltageValue;
+int time;
 
-
-
-void adc_init(void){
+void adc0_init(void){
 
     SYSCTL_RCGCGPIO_R |= SYSCTL_RCGCGPIO_R4;
     //while((SYSCTL_PRGPIO_R&0x1)==0){}
-    time = 0x01234567;
-
-    // setup gpio PE4 pin
-    GPIO_PORTE_AHB_DIR_R &= ~0x10;
-    GPIO_PORTE_AHB_AFSEL_R |= ~0x10;
-    GPIO_PORTE_AHB_DEN_R &= ~0x10;
-    GPIO_PORTE_AHB_AMSEL_R |= 0x10;
 
     // starts ADC0 channel clock
 
-    SYSCTL_RCGCADC_R |= 0x01;
+    SYSCTL_RCGCADC_R |= 0x01; //Enables adc0 clock
     time = 0x01234567;
 
     // ADC0 setup to get temperature value (PE4)
@@ -43,13 +37,6 @@ void adc_init(void){
     ADC0_IM_R &= ~0x0008;
     ADC0_ACTSS_R |= 0x0008;
 
-    // setup current adc sensor (PE5)
-    ADC0_ACTSS_R &= ~0x0001;
-    ADC0_SSMUX0_R = (ADC0_SSMUX0_R & 0xFFFFFFF0) + 0X0A;
-    ADC0_SSCTL0_R = 0x0006;
-    ADC0_IM_R &= ~0x0001;
-    ADC0_ACTSS_R |= 0x0001;
-
     // starts PLL & wait frequency wet fixed
 
     SYSCTL_PLLFREQ0_R |= SYSCTL_PLLFREQ0_PLLPWR;
@@ -58,37 +45,21 @@ void adc_init(void){
 
 }
 
-uint16_t adc_get_temperature_value(){
+uint16_t adc0_get_value(){
 
     // API to get temperature adc lecture
     ADC0_PSSI_R = 0x0008; // starts conversion
     while ((ADC0_RIS_R & 0x08) == 0) {} // wait conversion finished up
-    result_temperature = (ADC0_SSFIFO3_R & 0xFFF); // result_temperatura -> FIFO3
+    adc0RawValue = (ADC0_SSFIFO3_R & 0xFFF); // result_temperatura -> FIFO3
     ADC0_ISC_R = 0x0008;
 
-    return result_temperature;
-
+    return adc0RawValue;
 
 }
 
-uint16_t adc_get_current_value(){
+uint16_t adc1_get_value(){
 
-    // API to get current adc lecture
 
-    ADC0_PSSI_R = 0x0001; // starts conversion
-    while ((ADC0_RIS_R & 0x01) == 0) {} // wait conversion finished up
-    result_current = (ADC0_SSFIFO0_R & 0xFFF); //result_current -> FIFO0
-    ADC0_ISC_R = 0x0001;
-
-    return result_current;
-
-    /*
-    result_current_f = (float)result_current; // casting hex to float
-    voltage_current = (result_current_f*5.5)/4095; // adjust the resolution of the sensor
-    current = (voltage_current - 2.55) * 45.4545;
-
-    return current;
-    */
 }
 
 

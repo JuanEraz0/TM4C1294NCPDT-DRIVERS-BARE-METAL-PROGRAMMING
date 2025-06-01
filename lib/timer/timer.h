@@ -10,6 +10,7 @@
 
 
 void timer3_init(void);
+void timer5_init(void);
 
 
 
