@@ -18,6 +18,8 @@ src/main.obj: C:/ti/ccs1281/SW-TM4C/TivaWare_C_Series-2.1.4.178/inc/tm4c1294ncpd
 src/main.obj: C:/Users/Equipo/workspace_v12/project/lib/gpio/gpio.h
 src/main.obj: C:/Users/Equipo/workspace_v12/project/lib/adc/adc.h
 src/main.obj: C:/Users/Equipo/workspace_v12/project/lib/timer/timer.h
+src/main.obj: C:/Users/Equipo/workspace_v12/project/lib/stepper_motor/stepper_motor.h
+src/main.obj: C:/ti/ccs1281/ccs/tools/compiler/ti-cgt-arm_20.2.7.LTS/include/stdlib.h
 
 ../src/main.c:
 
@@ -54,4 +56,8 @@ C:/Users/Equipo/workspace_v12/project/lib/gpio/gpio.h:
 C:/Users/Equipo/workspace_v12/project/lib/adc/adc.h:
 
 C:/Users/Equipo/workspace_v12/project/lib/timer/timer.h:
+
+C:/Users/Equipo/workspace_v12/project/lib/stepper_motor/stepper_motor.h:
+
+C:/ti/ccs1281/ccs/tools/compiler/ti-cgt-arm_20.2.7.LTS/include/stdlib.h:
 

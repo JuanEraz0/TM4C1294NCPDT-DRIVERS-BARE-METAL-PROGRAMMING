@@ -17,7 +17,7 @@ uint32_t result_current;
 uint32_t time;
 
 float voltage_current;
-float current;
+uint16_t current;
 float result_current_f;
 float rounded;
 
@@ -25,7 +25,7 @@ float rounded;
 
 void adc_init(void);
 uint16_t adc_get_temperature_value();
-float adc_get_current_value();
+uint16_t adc_get_current_value();
 
 
 

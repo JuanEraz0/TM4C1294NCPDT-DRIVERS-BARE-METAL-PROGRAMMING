@@ -9,8 +9,8 @@
 #define GPIO_H_
 
 void gpio_init_portJ(void);
-void gpio_init_portB(void);
-void gpio_init_portC(void);
+void gpio_init_portL(void);
+void gpio_init_portD(void);
 
 
 

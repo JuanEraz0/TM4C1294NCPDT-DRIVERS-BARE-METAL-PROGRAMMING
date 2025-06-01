@@ -1,31 +1,32 @@
 ******************************************************************************
                   TI ARM Linker PC v20.2.7                     
 ******************************************************************************
->> Linked Sat May 31 00:30:25 2025
+>> Linked Sat May 31 20:59:42 2025
 
 OUTPUT FILE NAME:   <project.out>
-ENTRY POINT SYMBOL: "_c_int00_noargs"  address: 0000097d
+ENTRY POINT SYMBOL: "_c_int00_noargs"  address: 000007f5
 
 
 MEMORY CONFIGURATION
 
          name            origin    length      used     unused   attr    fill
 ----------------------  --------  ---------  --------  --------  ----  --------
-  FLASH                 00000000   00100000  00000a28  000ff5d8  R  X
-  SRAM                  20000000   00040000  00000228  0003fdd8  RW X
+  FLASH                 00000000   00100000  000008ae  000ff752  R  X
+  SRAM                  20000000   00040000  00000257  0003fda9  RW X
 
 
 SEGMENT ALLOCATION MAP
 
 run origin  load origin   length   init length attrs members
 ----------  ----------- ---------- ----------- ----- -------
-00000000    00000000    00000a2c   00000a2c    r-x
+00000000    00000000    000008b0   000008b0    r-x
   00000000    00000000    00000208   00000208    r-- .intvecs
-  00000208    00000208    0000080c   0000080c    r-x .text
-  00000a18    00000a18    00000014   00000014    r-- .cinit
-20000000    20000000    00000228   00000000    rw-
+  00000208    00000208    0000065e   0000065e    r-x .text
+  00000868    00000868    00000048   00000048    r-- .cinit
+20000000    20000000    00000257   00000000    rw-
   20000000    20000000    00000200   00000000    rw- .stack
-  20000200    20000200    00000028   00000000    rw- .bss
+  20000200    20000200    0000002c   00000000    rw- .data
+  2000022c    2000022c    0000002b   00000000    rw- .bss
 
 
 SECTION ALLOCATION MAP
@@ -36,42 +37,50 @@ section   page    origin      length       input sections
 .intvecs   0    00000000    00000208     
                   00000000    00000208     tm4c1294ncpdt_startup_ccs.obj (.intvecs)
 
-.text      0    00000208    0000080c     
-                  00000208    00000228     adc.obj (.text)
-                  00000430    000001b6     rtsv7M4_T_le_v4SPD16_eabi.lib : fd_add_t2.asm.obj (.text)
-                  000005e6    00000136                                   : fd_div_t2.asm.obj (.text)
-                  0000071c    000000fc                                   : fd_mul_t2.asm.obj (.text)
-                  00000818    00000078     main.obj (.text)
-                  00000890    0000006e     rtsv7M4_T_le_v4SPD16_eabi.lib : fd_tos_t2.asm.obj (.text)
-                  000008fe    00000002     timer.obj (.text)
-                  00000900    00000044     rtsv7M4_T_le_v4SPD16_eabi.lib : autoinit.c.obj (.text:__TI_auto_init_nobinit_nopinit:__TI_auto_init_nobinit_nopinit)
-                  00000944    00000038                                   : fs_tod_t2.asm.obj (.text)
-                  0000097c    00000034                                   : boot_cortex_m.c.obj (.text:_c_int00_noargs:_c_int00_noargs)
-                  000009b0    00000034     gpio.obj (.text)
-                  000009e4    0000001c     rtsv7M4_T_le_v4SPD16_eabi.lib : copy_zero_init.c.obj (.text:decompress:ZI:__TI_zero_init_nomemset:__TI_zero_init_nomemset)
-                  00000a00    0000000c     tm4c1294ncpdt_startup_ccs.obj (.text)
-                  00000a0c    00000004     rtsv7M4_T_le_v4SPD16_eabi.lib : pre_init.c.obj (.text:_system_pre_init)
-                  00000a10    00000004                                   : exit.c.obj (.text:abort:abort)
+.text      0    00000208    0000065e     
+                  00000208    00000198     adc.obj (.text)
+                  000003a0    0000015c     main.obj (.text)
+                  000004fc    0000009c     rtsv7M4_T_le_v4SPD16_eabi.lib : memcpy_t2.asm.obj (.text)
+                  00000598    00000098     gpio.obj (.text)
+                  00000630    00000090     stepper_motor.obj (.text)
+                  000006c0    00000088     timer.obj (.text)
+                  00000748    00000068     rtsv7M4_T_le_v4SPD16_eabi.lib : copy_decompress_lzss.c.obj (.text:decompress:lzss:__TI_decompress_lzss)
+                  000007b0    00000044                                   : autoinit.c.obj (.text:__TI_auto_init_nobinit_nopinit:__TI_auto_init_nobinit_nopinit)
+                  000007f4    00000034                                   : boot_cortex_m.c.obj (.text:_c_int00_noargs:_c_int00_noargs)
+                  00000828    0000001c                                   : copy_zero_init.c.obj (.text:decompress:ZI:__TI_zero_init_nomemset:__TI_zero_init_nomemset)
+                  00000844    0000000e                                   : copy_decompress_none.c.obj (.text:decompress:none:__TI_decompress_none)
+                  00000852    0000000c     tm4c1294ncpdt_startup_ccs.obj (.text)
+                  0000085e    00000004     rtsv7M4_T_le_v4SPD16_eabi.lib : pre_init.c.obj (.text:_system_pre_init)
+                  00000862    00000004                                   : exit.c.obj (.text:abort:abort)
 
-.cinit     0    00000a18    00000014     
-                  00000a18    00000008     (.cinit..bss.load) [load image, compression = zero_init]
-                  00000a20    00000004     (__TI_handler_table)
-                  00000a24    00000008     (__TI_cinit_table)
+.cinit     0    00000868    00000048     
+                  00000868    00000020     (.cinit..data.load) [load image, compression = lzss]
+                  00000888    0000000c     (__TI_handler_table)
+                  00000894    00000004     --HOLE-- [fill = 0]
+                  00000898    00000008     (.cinit..bss.load) [load image, compression = zero_init]
+                  000008a0    00000010     (__TI_cinit_table)
 
 .init_array 
 *          0    00000000    00000000     UNINITIALIZED
 
-.bss       0    20000200    00000028     UNINITIALIZED
-                  20000200    00000004     (.common:current)
-                  20000204    00000004     (.common:pj0_status)
-                  20000208    00000004     (.common:pj1_status)
-                  2000020c    00000004     (.common:pj2_status)
-                  20000210    00000004     (.common:result_current)
-                  20000214    00000004     (.common:result_current_f)
-                  20000218    00000004     (.common:result_temperature)
-                  2000021c    00000004     (.common:temperature)
-                  20000220    00000004     (.common:time)
-                  20000224    00000004     (.common:voltage_current)
+.data      0    20000200    0000002c     UNINITIALIZED
+                  20000200    00000010     stepper_motor.obj (.data:left_sequence)
+                  20000210    00000010     stepper_motor.obj (.data:right_sequence)
+                  20000220    0000000c     main.obj (.data)
+
+.bss       0    2000022c    0000002b     UNINITIALIZED
+                  2000022c    00000004     (.common:i)
+                  20000230    00000004     (.common:j)
+                  20000234    00000004     (.common:pd0_status)
+                  20000238    00000004     (.common:period)
+                  2000023c    00000004     (.common:pj0_status)
+                  20000240    00000004     (.common:pj1_status)
+                  20000244    00000004     (.common:result_current)
+                  20000248    00000004     (.common:result_temperature)
+                  2000024c    00000004     (.common:temperature)
+                  20000250    00000004     (.common:time)
+                  20000254    00000002     (.common:current)
+                  20000256    00000001     (.common:frequency)
 
 .stack     0    20000000    00000200     UNINITIALIZED
                   20000000    00000004     rtsv7M4_T_le_v4SPD16_eabi.lib : boot_cortex_m.c.obj (.stack)
@@ -90,117 +99,133 @@ MODULE SUMMARY
        Total:                          12     520       0      
                                                                
     .\lib\adc\
-       adc.obj                         552    0         24     
+       adc.obj                         408    0         14     
     +--+-------------------------------+------+---------+---------+
-       Total:                          552    0         24     
+       Total:                          408    0         14     
                                                                
     .\lib\gpio\
-       gpio.obj                        52     0         0      
+       gpio.obj                        152    0         0      
     +--+-------------------------------+------+---------+---------+
-       Total:                          52     0         0      
+       Total:                          152    0         0      
+                                                               
+    .\lib\stepper_motor\
+       stepper_motor.obj               144    0         40     
+    +--+-------------------------------+------+---------+---------+
+       Total:                          144    0         40     
                                                                
     .\lib\timer\
-       timer.obj                       2      0         0      
+       timer.obj                       136    0         0      
     +--+-------------------------------+------+---------+---------+
-       Total:                          2      0         0      
+       Total:                          136    0         0      
                                                                
     .\src\
-       main.obj                        120    0         16     
+       main.obj                        348    0         33     
     +--+-------------------------------+------+---------+---------+
-       Total:                          120    0         16     
+       Total:                          348    0         33     
                                                                
     C:\ti\ccs1281\ccs\tools\compiler\ti-cgt-arm_20.2.7.LTS\lib\rtsv7M4_T_le_v4SPD16_eabi.lib
-       fd_add_t2.asm.obj               438    0         0      
-       fd_div_t2.asm.obj               310    0         0      
-       fd_mul_t2.asm.obj               252    0         0      
-       fd_tos_t2.asm.obj               110    0         0      
+       memcpy_t2.asm.obj               156    0         0      
+       copy_decompress_lzss.c.obj      104    0         0      
        autoinit.c.obj                  68     0         0      
-       fs_tod_t2.asm.obj               56     0         0      
        boot_cortex_m.c.obj             52     0         0      
        copy_zero_init.c.obj            28     0         0      
+       copy_decompress_none.c.obj      14     0         0      
        exit.c.obj                      4      0         0      
        pre_init.c.obj                  4      0         0      
     +--+-------------------------------+------+---------+---------+
-       Total:                          1322   0         0      
+       Total:                          430    0         0      
                                                                
        Stack:                          0      0         512    
-       Linker Generated:               0      20        0      
+       Linker Generated:               0      68        0      
     +--+-------------------------------+------+---------+---------+
-       Grand Total:                    2060   540       552    
+       Grand Total:                    1630   588       599    
 
 
 LINKER GENERATED COPY TABLES
 
-__TI_cinit_table @ 00000a24 records: 1, size/record: 8, table size: 8
-	.bss: load addr=00000a18, load size=00000008 bytes, run addr=20000200, run size=00000028 bytes, compression=zero_init
+__TI_cinit_table @ 000008a0 records: 2, size/record: 8, table size: 16
+	.data: load addr=00000868, load size=00000020 bytes, run addr=20000200, run size=0000002c bytes, compression=lzss
+	.bss: load addr=00000898, load size=00000008 bytes, run addr=2000022c, run size=0000002b bytes, compression=zero_init
 
 
 LINKER GENERATED HANDLER TABLE
 
-__TI_handler_table @ 00000a20 records: 1, size/record: 4, table size: 4
-	index: 0, handler: __TI_zero_init
+__TI_handler_table @ 00000888 records: 3, size/record: 4, table size: 12
+	index: 0, handler: __TI_decompress_lzss
+	index: 1, handler: __TI_decompress_none
+	index: 2, handler: __TI_zero_init
 
 
 GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name 
 
 address   name                          
 -------   ----                          
-00000a11  C$$EXIT                       
-00000873  ISR_handler                   
-00000871  ISR_init                      
-00000a01  ResetISR                      
-00000875  Timer03AIntHandler            
+00000863  C$$EXIT                       
+00000401  ISR_hall_handler              
+000003ff  ISR_hall_init                 
+00000405  ISR_switch_handler            
+00000403  ISR_switch_init               
+00000853  ResetISR                      
+00000407  Timer03AIntHandler            
 20000200  __STACK_END                   
 00000200  __STACK_SIZE                  
 20000200  __STACK_TOP                   
-00000a24  __TI_CINIT_Base               
-00000a2c  __TI_CINIT_Limit              
-00000a20  __TI_Handler_Table_Base       
-00000a24  __TI_Handler_Table_Limit      
-00000901  __TI_auto_init_nobinit_nopinit
+000008a0  __TI_CINIT_Base               
+000008b0  __TI_CINIT_Limit              
+00000888  __TI_Handler_Table_Base       
+00000894  __TI_Handler_Table_Limit      
+000007b1  __TI_auto_init_nobinit_nopinit
+00000749  __TI_decompress_lzss          
+00000845  __TI_decompress_none          
 ffffffff  __TI_pprof_out_hndl           
 ffffffff  __TI_prof_data_size           
 ffffffff  __TI_prof_data_start          
 00000000  __TI_static_base__            
-000009e5  __TI_zero_init_nomemset       
-00000891  __aeabi_d2f                   
-0000043b  __aeabi_dadd                  
-000005e7  __aeabi_ddiv                  
-0000071d  __aeabi_dmul                  
-00000431  __aeabi_dsub                  
-00000945  __aeabi_f2d                   
+00000829  __TI_zero_init_nomemset       
+000004fd  __aeabi_memcpy                
+000004fd  __aeabi_memcpy4               
+000004fd  __aeabi_memcpy8               
 ffffffff  __binit__                     
 ffffffff  __c_args__                    
 UNDEFED   __mpu_init                    
 20000000  __stack                       
 20000000  __start___llvm_prf_cnts       
 20000000  __stop___llvm_prf_cnts        
-0000097d  _c_int00_noargs               
+000007f5  _c_int00_noargs               
 UNDEFED   _system_post_cinit            
-00000a0d  _system_pre_init              
-00000a11  abort                         
+0000085f  _system_pre_init              
+00000863  abort                         
 00000313  adc_get_current_value         
 000002ed  adc_get_temperature_value     
 00000209  adc_init                      
 ffffffff  binit                         
-20000200  current                       
-00000837  drivers_setup                 
+20000224  clk                           
+20000254  current                       
+000003c1  drivers_setup                 
+20000256  frequency                     
 00000000  g_pfnVectors                  
-000009cf  gpio_init_portB               
-000009d1  gpio_init_portC               
-000009b1  gpio_init_portJ               
-00000819  main                          
-20000204  pj0_status                    
-20000208  pj1_status                    
-2000020c  pj2_status                    
-0000084b  read_gpio_inputs              
-20000210  result_current                
-20000214  result_current_f              
-20000218  result_temperature            
-2000021c  temperature                   
-20000220  time                          
-000008ff  timer_init                    
-20000224  voltage_current               
+000005cf  gpio_init_portD               
+00000599  gpio_init_portJ               
+000005b7  gpio_init_portL               
+2000022c  i                             
+20000230  j                             
+20000200  left_sequence                 
+000003a1  main                          
+000004fd  memcpy                        
+20000234  pd0_status                    
+20000238  period                        
+2000023c  pj0_status                    
+20000240  pj1_status                    
+000003d9  read_gpio_inputs              
+20000244  result_current                
+20000248  result_temperature            
+20000210  right_sequence                
+20000228  rpm                           
+0000067f  stepper_motor_rotates_left    
+00000631  stepper_motor_rotates_right   
+2000024c  temperature                   
+20000250  time                          
+000006c1  timer3_init                   
 
 
 GLOBAL SYMBOLS: SORTED BY Symbol Address 
@@ -213,48 +238,58 @@ address   name
 00000209  adc_init                      
 000002ed  adc_get_temperature_value     
 00000313  adc_get_current_value         
-00000431  __aeabi_dsub                  
-0000043b  __aeabi_dadd                  
-000005e7  __aeabi_ddiv                  
-0000071d  __aeabi_dmul                  
-00000819  main                          
-00000837  drivers_setup                 
-0000084b  read_gpio_inputs              
-00000871  ISR_init                      
-00000873  ISR_handler                   
-00000875  Timer03AIntHandler            
-00000891  __aeabi_d2f                   
-000008ff  timer_init                    
-00000901  __TI_auto_init_nobinit_nopinit
-00000945  __aeabi_f2d                   
-0000097d  _c_int00_noargs               
-000009b1  gpio_init_portJ               
-000009cf  gpio_init_portB               
-000009d1  gpio_init_portC               
-000009e5  __TI_zero_init_nomemset       
-00000a01  ResetISR                      
-00000a0d  _system_pre_init              
-00000a11  C$$EXIT                       
-00000a11  abort                         
-00000a20  __TI_Handler_Table_Base       
-00000a24  __TI_CINIT_Base               
-00000a24  __TI_Handler_Table_Limit      
-00000a2c  __TI_CINIT_Limit              
+000003a1  main                          
+000003c1  drivers_setup                 
+000003d9  read_gpio_inputs              
+000003ff  ISR_hall_init                 
+00000401  ISR_hall_handler              
+00000403  ISR_switch_init               
+00000405  ISR_switch_handler            
+00000407  Timer03AIntHandler            
+000004fd  __aeabi_memcpy                
+000004fd  __aeabi_memcpy4               
+000004fd  __aeabi_memcpy8               
+000004fd  memcpy                        
+00000599  gpio_init_portJ               
+000005b7  gpio_init_portL               
+000005cf  gpio_init_portD               
+00000631  stepper_motor_rotates_right   
+0000067f  stepper_motor_rotates_left    
+000006c1  timer3_init                   
+00000749  __TI_decompress_lzss          
+000007b1  __TI_auto_init_nobinit_nopinit
+000007f5  _c_int00_noargs               
+00000829  __TI_zero_init_nomemset       
+00000845  __TI_decompress_none          
+00000853  ResetISR                      
+0000085f  _system_pre_init              
+00000863  C$$EXIT                       
+00000863  abort                         
+00000888  __TI_Handler_Table_Base       
+00000894  __TI_Handler_Table_Limit      
+000008a0  __TI_CINIT_Base               
+000008b0  __TI_CINIT_Limit              
 20000000  __stack                       
 20000000  __start___llvm_prf_cnts       
 20000000  __stop___llvm_prf_cnts        
 20000200  __STACK_END                   
 20000200  __STACK_TOP                   
-20000200  current                       
-20000204  pj0_status                    
-20000208  pj1_status                    
-2000020c  pj2_status                    
-20000210  result_current                
-20000214  result_current_f              
-20000218  result_temperature            
-2000021c  temperature                   
-20000220  time                          
-20000224  voltage_current               
+20000200  left_sequence                 
+20000210  right_sequence                
+20000224  clk                           
+20000228  rpm                           
+2000022c  i                             
+20000230  j                             
+20000234  pd0_status                    
+20000238  period                        
+2000023c  pj0_status                    
+20000240  pj1_status                    
+20000244  result_current                
+20000248  result_temperature            
+2000024c  temperature                   
+20000250  time                          
+20000254  current                       
+20000256  frequency                     
 ffffffff  __TI_pprof_out_hndl           
 ffffffff  __TI_prof_data_size           
 ffffffff  __TI_prof_data_start          
@@ -264,4 +299,4 @@ ffffffff  binit
 UNDEFED   __mpu_init                    
 UNDEFED   _system_post_cinit            
 
-[56 symbols]
+[66 symbols]

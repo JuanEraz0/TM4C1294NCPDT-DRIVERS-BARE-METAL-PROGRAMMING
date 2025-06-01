@@ -7,12 +7,13 @@
 
 #include "gpio.h"
 #include "inc/tm4c1294ncpdt.h"
+
 #include <stdint.h>
 
 
 void gpio_init_portJ(void){
 
-    //Function to init port J (PJ0 & PJ1) Tiva Embedded push buttons & External button pinned in PJ2
+    //Function to init port J (PJ0 & PJ1) Tiva Embedded push buttons
 
     SYSCTL_RCGCGPIO_R |= 0x100; //Enables clk to PORT J
     GPIO_PORTJ_AHB_DIR_R = 0x00; //Set PJ0 & PJ1 & PJ2 as input
@@ -20,10 +21,31 @@ void gpio_init_portJ(void){
     GPIO_PORTJ_AHB_DEN_R = 0x07; //Set up PJ0 & PJ1 & PJ2 as digital pins
 
 }
-void gpio_init_portB(void){
+void gpio_init_portL(void){
+
+    SYSCTL_RCGCGPIO_R |= 0x400; //Enables clk to PORT L
+    GPIO_PORTL_DIR_R = 0x0F; //Set PL[0:3] as output
+    GPIO_PORTL_DEN_R = 0x0F; //Set up PJ0 & PJ1 & PJ2 as digital pins
+
 
 }
-void gpio_init_portC(void){
+void gpio_init_portD(void){
+
+    //Function to Enable PD0 & PD4, PD0 as digital Input, and PD4 as TIMER
+
+    SYSCTL_RCGCGPIO_R |= 0x0008; //Enables clk to PORT D
+    GPIO_PORTD_AHB_DIR_R = 0x00; //Set PD0 & PD4 as input
+    GPIO_PORTD_AHB_DEN_R = 0x11; //Set up PD0 & PD4 as digital pins
+    GPIO_PORTD_AHB_PUR_R = 0x01; //Enables PD0 Pull-Up Resistances
+    GPIO_PORTD_AHB_DATA_R = 0x00;
+
+    GPIO_PORTD_AHB_AFSEL_R = 0x10; //Enables alternate function in PD4
+    GPIO_PORTD_AHB_PCTL_R = 0x00030000; // points to T3CCP0 TIMER3
+
+
+
+
+
 
 }
 
