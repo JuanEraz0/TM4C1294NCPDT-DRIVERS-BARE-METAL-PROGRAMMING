@@ -8,7 +8,7 @@
 
 ---
 
-## 🧠 Overview
+## Overview
 
 This embedded project demonstrates how to control a **stepper motor** using a **TM4C1294NCPDT microcontroller**, integrating multiple peripherals and techniques:
 
@@ -23,12 +23,35 @@ The motor rotates in response to external triggers, such as Hall effect sensor p
 
 ---
 
-## 🧩 Project Structure
+## Project Structure
+
+/project-root
+│
+├── src/
+│   └── main.c                      # Main application logic
+│
+├── lib/
+│   ├── adc/
+│   │   ├── adc.c                   # ADC0 driver (PE4 input)
+│   │   └── adc.h
+│   ├── gpio/
+│   │   ├── gpio.c                  # GPIO config for ports J, D, L, E, M, N
+│   │   └── gpio.h
+│   ├── timer/
+│   │   ├── timer.c                 # Timer3 (Capture) and Timer5 (PWM)
+│   │   └── timer.h
+│   └── stepper_motor/
+│       ├── stepper_motor.c         # Stepper motor control sequences
+│       └── stepper_motor.h
+│
+├── inc/
+│   └── tm4c1294ncpdt.h             # MCU register definitions
+└── README.md                       # You are here
 
 
 ---
 
-## ⚙️ Features
+## Features
 
 | Feature              | Description                                  |
 |----------------------|----------------------------------------------|
@@ -41,7 +64,7 @@ The motor rotates in response to external triggers, such as Hall effect sensor p
 
 ---
 
-## 🛠️ Hardware Requirements
+## Hardware Requirements
 
 - TM4C1294NCPDT Launchpad (Tiva C Series)  
 - Stepper motor (e.g., 28BYJ-48 + ULN2003 driver)  
@@ -51,7 +74,7 @@ The motor rotates in response to external triggers, such as Hall effect sensor p
 
 ---
 
-## 🔄 How It Works
+## How It Works
 
 1. **Motor trigger**: A rising edge on the Hall sensor or pressing a button enables motor movement.  
 2. **Analog control**: A potentiometer adjusts the PWM signal applied to the motor.  
@@ -61,7 +84,7 @@ The motor rotates in response to external triggers, such as Hall effect sensor p
 
 ---
 
-## 🧠 Interrupt Behavior
+## Interrupt Behavior
 
 - **PD0 (Hall effect sensor)**: Rising edge enables motor rotation.  
 - **PN2 (Push button)**: Falling edge also enables motor rotation.  
@@ -69,7 +92,7 @@ The motor rotates in response to external triggers, such as Hall effect sensor p
 
 ---
 
-## 🛠️ To-Do / Improvements
+## To-Do / Improvements
 
 - Add `adc1_get_value()` support for dual analog sensing  
 - Abstract hardware register accesses using macros for portability  
@@ -79,7 +102,7 @@ The motor rotates in response to external triggers, such as Hall effect sensor p
 
 ---
 
-## 📚 References
+## References
 
 - Tiva™ TM4C129x Datasheet – Texas Instruments  
 - *Embedded Systems: Real-Time Interfacing to ARM® Cortex™-M* – Jonathan Valvano  
@@ -87,7 +110,7 @@ The motor rotates in response to external triggers, such as Hall effect sensor p
 
 ---
 
-## ✅ License
+## License
 
 This project is provided under the terms of the **GNU General Public License v3.0 (GPL-3.0)**.  
 You are free to copy, modify, and distribute this code under the same license.  
@@ -95,11 +118,11 @@ Read the full license text here: [GNU GPL 3.0](https://www.gnu.org/licenses/gpl-
 
 ---
 
-## 🧰 Getting Started – Load Project in Code Composer Studio (CCS)
+##  Getting Started – Load Project in Code Composer Studio (CCS)
 
 ### 📦 1. Clone the Repository
 
 ```bash
-git clone https://github.com/tu-usuario/tu-repo.git
-cd tu-repo
+git clone https://github.com/JuanEraz0/TM4C1294NCPDT-DRIVERS-BARE-METAL-PROGRAMMING.git
+cd TM4C1294NCPDT-DRIVERS-BARE-METAL-PROGRAMMING
 zip -r project.zip .
