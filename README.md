@@ -4,7 +4,8 @@
 > **Author:** Juan José Erazo Pacheco  
 > **Date:** May 2025  
 > **Platform:** Tiva C Series TM4C1294NCPDT  
-> **Toolchain:** TI Code Composer Studio / GCC (bare-metal)
+> **Toolchain:** TI Code Composer Studio /
+ GCC (bare-metal)
 
 ---
 
@@ -125,9 +126,9 @@ Read the full license text here: [GNU GPL 3.0](https://www.gnu.org/licenses/gpl-
 ```bash
 git clone https://github.com/JuanEraz0/TM4C1294NCPDT-DRIVERS-BARE-METAL-PROGRAMMING.git
 cd TM4C1294NCPDT-DRIVERS-BARE-METAL-PROGRAMMING
-zip -r project.zip .
+
 ```
-### 2. Open zip file in a CCS workspace 
+### 2. Open Dir in a CCS workspace 
 ### 3. Add TivaWare to Your Project
 
 This project depends on the **TivaWare Peripheral Driver Library**.
@@ -135,8 +136,8 @@ This project depends on the **TivaWare Peripheral Driver Library**.
 #### If you already have TivaWare installed:
 
 1. Right-click your project in **Code Composer Studio** and select **Properties**
-2. Navigate to `Build → ARM Compiler → Include Options`
-3. Click **Add** and provide the path to your TivaWare installation. For example:
+2. Navigate to `Build → Variables → TIVAWARE `
+3. Click in **Edit** button and provide the path to your TivaWare installation in the Value field. For example:
 
 ```bash
 C:/ti/TivaWare_C_Series-2.2.0.295
