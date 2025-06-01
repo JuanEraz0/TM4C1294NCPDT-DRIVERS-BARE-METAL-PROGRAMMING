@@ -4,7 +4,7 @@
 > **Author:** Juan José Erazo Pacheco  
 > **Date:** May 2025  
 > **Platform:** Tiva C Series TM4C1294NCPDT  
-> **Toolchain:** TI Code Composer Studio / Keil / GCC (bare-metal)
+> **Toolchain:** TI Code Composer Studio / GCC (bare-metal)
 
 ---
 
