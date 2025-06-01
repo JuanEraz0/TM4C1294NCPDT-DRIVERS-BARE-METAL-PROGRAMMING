@@ -24,7 +24,7 @@ The motor rotates in response to external triggers, such as Hall effect sensor p
 ---
 
 ## Project Structure
-
+```bash
 /project-root
 │
 ├── src/
@@ -47,7 +47,7 @@ The motor rotates in response to external triggers, such as Hall effect sensor p
 ├── inc/
 │   └── tm4c1294ncpdt.h             # MCU register definitions
 └── README.md                       # You are here
-
+```
 
 ---
 
