@@ -120,9 +120,34 @@ Read the full license text here: [GNU GPL 3.0](https://www.gnu.org/licenses/gpl-
 
 ##  Getting Started – Load Project in Code Composer Studio (CCS)
 
-### 📦 1. Clone the Repository
+### 1. Clone the Repository
 
 ```bash
 git clone https://github.com/JuanEraz0/TM4C1294NCPDT-DRIVERS-BARE-METAL-PROGRAMMING.git
 cd TM4C1294NCPDT-DRIVERS-BARE-METAL-PROGRAMMING
 zip -r project.zip .
+```
+### 2. Open zip file in a CCS workspace 
+### 3. Add TivaWare to Your Project
+
+This project depends on the **TivaWare Peripheral Driver Library**.
+
+#### If you already have TivaWare installed:
+
+1. Right-click your project in **Code Composer Studio** and select **Properties**
+2. Navigate to `Build → ARM Compiler → Include Options`
+3. Click **Add** and provide the path to your TivaWare installation. For example:
+
+```bash
+C:/ti/TivaWare_C_Series-2.2.0.295
+```
+git clone https://github.com/TaLucGiaHoang/SW-TM4C.git
+
+
+
+#### If you don’t have TivaWare installed:
+You can clone a compatible version from this GitHub mirror:
+
+```bash
+git clone https://github.com/TaLucGiaHoang/SW-TM4C.git
+```
