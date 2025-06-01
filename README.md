@@ -73,7 +73,7 @@ The motor rotates in response to external triggers, such as Hall effect sensor p
 
 ---
 
-## 🔄 How It Works
+## How It Works
 
 1. **Motor trigger**: A rising edge on the Hall sensor or pressing a button enables motor movement.
 2. **Analog control**: A potentiometer adjusts the PWM signal applied to the motor.
@@ -83,7 +83,7 @@ The motor rotates in response to external triggers, such as Hall effect sensor p
 
 ---
 
-## 🚨 Interrupt Behavior
+## Interrupt Behavior
 
 - **PD0 (Hall effect)**: Rising edge enables motor rotation.
 - **PN2 (Button)**: Falling edge also enables motor rotation.
@@ -91,7 +91,7 @@ The motor rotates in response to external triggers, such as Hall effect sensor p
 
 ---
 
-## 📋 To-Do / Improvements
+## To-Do / Improvements
 
 - Add `adc1_get_value()` support for dual analog sensing
 - Abstract hardware register accesses using macros for portability
@@ -113,3 +113,37 @@ The motor rotates in response to external triggers, such as Hall effect sensor p
 
 This project is provided for educational purposes and is open for extension under the [MIT License](https://opensource.org/licenses/MIT).
 
+Getting Started – Load Project in Code Composer Studio (CCS)
+ 
+1. Clone the Repository
+Open your terminal and run:
+
+bash
+Copiar
+Editar
+git clone https://github.com/tu-usuario/tu-repo.git
+cd tu-repo
+zip -r project.zip .
+📝 Replace https://github.com/tu-usuario/tu-repo.git with your actual repository URL.
+
+🛠️ 2. Import into Code Composer Studio
+Open Code Composer Studio
+
+Go to File → Import...
+
+Select "Code Composer Studio → Projects from Archive File"
+
+Click Browse..., and choose the project.zip you just created
+
+Check the project name and click Finish
+
+Your project will now appear in the Project Explorer, ready to build and run.
+
+🧪 3. Flash and Debug on Tiva LaunchPad
+Connect your TM4C1294NCPDT board via USB
+
+Click the Build button (hammer icon)
+
+Press the Debug button (green bug icon)
+
+The code will be flashed, and execution will begin
