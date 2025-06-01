@@ -25,6 +25,28 @@ The motor rotates in response to external triggers, such as Hall effect sensor p
 
 ## 🧩 Project Structure
 
+/project-root
+│
+|── src/
+│  ├── main.c # Main application logic
+│
+├── lib/
+│ ├── adc/
+│ │ ├── adc.c # ADC0 driver (PE4 input)
+│ │ └── adc.h
+│ ├── gpio/
+│ │ ├── gpio.c # GPIO config for ports J, D, L, E, M, N
+│ │ └── gpio.h
+│ ├── timer/
+│ │ ├── timer.c # Timer3 (Capture) and Timer5 (PWM)
+│ │ └── timer.h
+│ └── stepper_motor/
+│ ├── stepper_motor.c # Stepper motor control sequences
+│ └── stepper_motor.h
+│
+├── inc/
+│ └── tm4c1294ncpdt.h # MCU register definitions
+└── README.md # 📘 You are here
 
 ---
 
