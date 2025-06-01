@@ -141,9 +141,6 @@ This project depends on the **TivaWare Peripheral Driver Library**.
 ```bash
 C:/ti/TivaWare_C_Series-2.2.0.295
 ```
-git clone https://github.com/TaLucGiaHoang/SW-TM4C.git
-
-
 
 #### If you don’t have TivaWare installed:
 You can clone a compatible version from this GitHub mirror:
