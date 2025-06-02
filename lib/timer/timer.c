@@ -81,3 +81,5 @@ void timer5_init(void) {
     // Enable Timer B with PWM configuration
     TIMER5_CTL_R |= 0x4100;
 }
+
+

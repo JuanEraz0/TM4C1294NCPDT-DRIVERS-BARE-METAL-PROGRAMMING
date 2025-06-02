@@ -1,13 +1,16 @@
 /*
  * stepper_motor.c
  *
- *  Created on: 31 May 2025
- *      Author: juanjoseerazopacheco
+ * Created on: 31 May 2025
+ * Author: juanjoseerazopacheco
  *
- *  Brief:
- *  This file implements the control logic to drive a stepper motor using GPIO Port L.
- *  It defines the pulse sequences needed to rotate the motor clockwise and counterclockwise,
- *  sending the sequences directly to the data register of Port L.
+ * Description:
+ * Implements the control logic to drive a stepper motor using GPIO Port L
+ * on the TM4C1294NCPDT microcontroller.
+ *
+ * The motor is rotated by sending specific 4-step sequences (half-stepping or wave drive)
+ * to the motor coils connected to PL0–PL3. The direction of rotation is determined
+ * by the order in which the signals are applied (CW or CCW).
  */
 
 #include "stepper_motor.h"
@@ -15,30 +18,40 @@
 #include <stdint.h>
 #include <stdio.h>
 
-// Sequence for rotating motor clockwise (right)
+// ---------------------- Stepper Sequences ----------------------
+
+// Right (clockwise) rotation sequence for 4-step motor
 int right_sequence[4] = {0x09, 0x0C, 0x06, 0x03};
 
-// Sequence for rotating motor counterclockwise (left)
+// Left (counterclockwise) rotation sequence (reverse order)
 int left_sequence[4]  = {0x03, 0x06, 0x0C, 0x09};
 
-int i, j;
+// Loop counters
+int i;
+volatile j; // Volatile to prevent optimization during delay loop
 
-void stepper_motor_rotates_right(void) {
-    // Iterate through pulse sequence in reverse to rotate right
-    for (i = 3; i >= 0; i--) {
-        GPIO_PORTL_DATA_R = right_sequence[i];
+// ---------------------- Motor Control Functions ----------------------
 
-        // Simple delay loop for motor step timing (non-blocking in real-time)
-        for (j = 3000; j >= 0; j--);
+/**
+ * @brief Rotates the stepper motor clockwise by iterating through the forward sequence.
+ *
+ * @param delay Delay between coil activations to control speed.
+ */
+void stepper_motor_rotates_right(uint32_t delay) {
+    for (i = 0; i < 4; i++) {
+        GPIO_PORTL_DATA_R = right_sequence[i]; // Send pattern to PL0–PL3
+        for (j = 0; j < delay; j++);           // Basic delay loop
     }
 }
 
-void stepper_motor_rotates_left(void) {
-    // Iterate through pulse sequence in reverse to rotate left
-    for (i = 3; i >= 0; i--) {
-        GPIO_PORTL_DATA_R = left_sequence[i];
-
-        // Missing delay here could cause erratic behavior in some motors
-        for (j = 3000; j >= 0; j--); // Optional: Match timing with right rotation
+/**
+ * @brief Rotates the stepper motor counterclockwise by iterating through the reverse sequence.
+ *
+ * @param delay Delay between coil activations to control speed.
+ */
+void stepper_motor_rotates_left(uint32_t delay) {
+    for (i = 0; i < 4; i++) {
+        GPIO_PORTL_DATA_R = left_sequence[i];  // Send pattern to PL0–PL3
+        for (j = 0; j < delay; j++);           // Basic delay loop
     }
 }

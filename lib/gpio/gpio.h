@@ -32,4 +32,7 @@ void gpio_init_portE(void);
 // Initializes Port M (PM7 for alternate function, typically PWM)
 void gpio_init_portM(void);
 
+// Initializes Port M (PB4 for alternate function, AIN10)
+void gpio_init_portB(void);
+
 #endif /* GPIO_H_ */
